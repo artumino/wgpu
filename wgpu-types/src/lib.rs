@@ -5039,7 +5039,7 @@ impl<L, V> TextureDescriptor<L, V> {
         Extent3d {
             width: u32::max(1, self.size.width >> mip_level),
             height: u32::max(1, self.size.height >> mip_level),
-            depth_or_array_layers: 1,
+            depth_or_array_layers: self.array_layer_count(),
         }
     }
 

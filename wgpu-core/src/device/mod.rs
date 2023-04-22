@@ -1182,7 +1182,7 @@ impl<A: HalApi> Device<A> {
         let multiview_supported = self.features.contains(wgt::Features::MULTIVIEW);
 
         // https://gpuweb.github.io/gpuweb/#abstract-opdef-renderable-texture-view
-        // We relax the requirement that the texture view dimension must be 2D in case of 
+        // We relax the requirement that the texture view dimension must be 2D in case of
         // multiview rendering where the texture view dimension can be a 2DArray.
         let render_extent = 'b: loop {
             if !texture
@@ -1193,8 +1193,9 @@ impl<A: HalApi> Device<A> {
                 break 'b Err(TextureViewNotRenderableReason::Usage(texture.desc.usage));
             }
 
-            if resolved_dimension != TextureViewDimension::D2 && 
-                 (!multiview_supported || resolved_dimension != TextureViewDimension::D2Array) {
+            if resolved_dimension != TextureViewDimension::D2
+                && (!multiview_supported || resolved_dimension != TextureViewDimension::D2Array)
+            {
                 break 'b Err(TextureViewNotRenderableReason::Dimension(
                     resolved_dimension,
                 ));
