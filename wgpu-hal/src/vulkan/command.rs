@@ -425,6 +425,12 @@ impl crate::CommandEncoder<super::Api> for super::CommandEncoder {
             attachments: ArrayVec::default(),
             extent: desc.extent,
             sample_count: desc.sample_count,
+            layers: if desc.multiview.is_some() {
+                // https://vulkan.lunarg.com/doc/view/1.3.243.0/windows/1.3-extensions/vkspec.html#VUID-VkFramebufferCreateInfo-renderPass-02531
+                1
+            } else {
+                desc.extent.depth_or_array_layers
+            }
         };
         let caps = &self.device.private_caps;
 

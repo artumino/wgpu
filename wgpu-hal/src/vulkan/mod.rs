@@ -285,6 +285,7 @@ struct FramebufferKey {
     attachments: ArrayVec<FramebufferAttachment, { MAX_TOTAL_ATTACHMENTS }>,
     extent: wgt::Extent3d,
     sample_count: u32,
+    layers: u32,
 }
 
 struct DeviceShared {

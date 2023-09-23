@@ -253,7 +253,7 @@ impl super::DeviceShared {
                     .render_pass(raw_pass)
                     .width(e.key().extent.width)
                     .height(e.key().extent.height)
-                    .layers(e.key().extent.depth_or_array_layers);
+                    .layers(e.key().layers);
 
                 if self.private_caps.imageless_framebuffers {
                     //TODO: https://github.com/MaikKlein/ash/issues/450
